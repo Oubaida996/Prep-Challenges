@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 // Important Note:
 // Kindly use map loop instead of for in all of your solutions
@@ -7,20 +7,18 @@
 // Map: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
 
 // 1) ---------------------
-// 
+//
 // Given an array of values use map to calculate the square of the values.
-//  
+//
 // EX:
 // [ 2, 8, 3, 5 ] ==> [ 4, 64, 9, 25 ]
-// 
+//
 // -------------
 
 function square(arr) {
     // write your code here
     let squareArr = [];
-    arr.map(item =>
-        squareArr.push(item * item)
-    );
+    arr.map((item) => squareArr.push(item * item));
     return squareArr;
 }
 
@@ -35,7 +33,7 @@ function square(arr) {
 //     {
 //         firstName: 'Ben',
 //         lastName: 'Zeller',
-//     }, 
+//     },
 //     {
 //         firstName: 'Peter',
 //         lastName: 'Mccord',
@@ -52,7 +50,7 @@ function square(arr) {
 //
 //
 // Output ==>['Adam Anderson', 'Ben Zeller', 'Peter Mccord', 'Fred Sagar', 'Nathan Weiss']
-// 
+//
 //
 // Given an array of objects of student's first and last name, use the map to return an array off student's full names.
 //
@@ -62,17 +60,15 @@ function square(arr) {
 function fullName(arr) {
     // write your code here
     let fullNameArr = [];
-    arr.map(item =>
-        fullNameArr.push(`${item.firstName} ${item.lastName}`)
-    );
+    arr.map((item) => fullNameArr.push(`${item.firstName} ${item.lastName}`));
     return fullNameArr;
 }
 
 // 3) ---------------------
-// 
-// Given an array of objects use map to calculate the average of the grades 
+//
+// Given an array of objects use map to calculate the average of the grades
 // and return an array of the objects with a new property called avg (that represent the average of the grades).
-//  
+//
 
 // EX:
 // var students = [
@@ -128,14 +124,28 @@ function fullName(arr) {
 
 function gradesAvg(arr) {
     // write your code here
+    let results = [];
 
+    arr.map((item) => {
+        let avg = 0;
+        item.gradsList.map((item2) => {
+            avg += item2;
+        });
+        results.push({
+            firstName: item.firstName,
+            lastName: item.lastName,
+            gradsList: item.gradsList,
+            avg: avg / item.gradsList.length,
+        });
+    });
+
+    return results;
 }
-
 
 // 4) ---------------------
 //
 // Using the previous function result, determine if the student pass or failed,
-// and return the array of the object with a new property called result (with Passed or Failed)//  
+// and return the array of the object with a new property called result (with Passed or Failed)//
 //
 //	note : if his/her avg equal or above 50 the result will be Passed, and Failed if it's less than that
 // EX:
@@ -200,6 +210,20 @@ function gradesAvg(arr) {
 
 function studentsResult(arr) {
     // write your code here
+    let results = [];
+    arr.map((item) => {
+        let result = "";
+        item.avg < 50 ? (result = "Failed") : (result = "Passed");
+
+        results.push({
+            firstName: item.firstName,
+            lastName: item.lastName,
+            gradsList: item.gradsList,
+            avg: item.avg,
+            result: result,
+        });
+    });
+    return results;
 }
 
 module.exports = { square, fullName, gradesAvg, studentsResult };
