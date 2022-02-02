@@ -92,7 +92,6 @@ const cvsFiltration = (arr) => {
                 fullName: `${element.firstName} ${element.LastName}`,
                 tech: element.tech,
             });
-
         }
     });
 
@@ -110,6 +109,18 @@ const cvsFiltration = (arr) => {
 
 const vowelsFiltration = (arr) => {
     // write your code here
+    let result = arr.filter((element) => {
+        if (
+            (element.includes("o") ||
+                element.includes("a") ||
+                element.includes("i") ||
+                element.includes("e") ||
+                element.includes("u")) == false
+        ) {
+            return element;
+        }
+    });
+    return result;
 };
 
 // 4) ---------------------
@@ -128,6 +139,17 @@ const vowelsFiltration = (arr) => {
 
 const skillComparison = (arr1, arr2) => {
     // write your code here
+    let resulte = arr1.filter((e) => {
+        if (arr2.includes(e) == false) {
+            return e;
+        }
+    });
+    let resultes = arr2.filter((e) => {
+        if (arr1.includes(e) == false) {
+            return e;
+        }
+    });
+    return resulte.concat(resultes);
 };
 
 module.exports = {
