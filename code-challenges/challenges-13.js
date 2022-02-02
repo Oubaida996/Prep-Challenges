@@ -1,13 +1,13 @@
-'use strict';
+"use strict";
 
-// Important Note: 
+// Important Note:
 // Kindly use reduce instead of for in all of your solutions
 
 // Resource:
 // Reduce: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
 
 // 1) ---------------------
-// 
+//
 //  Given an array of objects, count the objects by using reduce method.
 
 //  EX:
@@ -40,15 +40,14 @@
 const objectCounter = (obj) => {
     // write your code here
 
-    let counter = obj.reduce((previous, current, index, ) => {
+    let counter = obj.reduce((previous, current, index) => {
         return index;
     });
     return ++counter;
-
-}
+};
 
 // 2) ---------------------
-// 
+//
 // Given a string input as an argument reverse it using reduce method.
 //
 //  EX:
@@ -69,11 +68,10 @@ const stringReverse = (str) => {
         return `${pre} ${next}`;
     });
     return join;
-
-}
+};
 
 // 3) ---------------------
-// 
+//
 // Using the same array of object from the first question, create new object that contain the candidates name as keys (voting for),
 // and how many times they got voted to as values using the reduce method.
 //
@@ -112,10 +110,20 @@ const stringReverse = (str) => {
 
 const statistics = (obj) => {
     // write your code here
+    let candidates = [];
+    for (const element of obj) {
+        candidates.push(element.votes_To);
+    }
 
-
-}
-
-
+    let counterNames = candidates.reduce((allNames, name) => {
+        if (name in allNames) {
+            allNames[name]++ //allNames[name] =allNames[name] +1;
+        } else {
+            allNames[name] = 1;
+        }
+        return allNames;
+    }, {});
+    return counterNames;
+};
 
 module.exports = { objectCounter, stringReverse, statistics };
