@@ -14,7 +14,7 @@
 
 const reverseString = (string) => {
         //write your code here ...
-        return string.split().reverse().join();
+        return string.split("").reverse().join("");
     }
     // -------------------------------------------------------------------------------------------------------
 
