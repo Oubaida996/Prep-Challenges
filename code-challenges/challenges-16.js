@@ -14,7 +14,7 @@
 
 const reverseString = (string) => {
         //write your code here ...
-        return string.split().reverse().join();
+        return string.split("").reverse().join("");
     }
     // -------------------------------------------------------------------------------------------------------
 
@@ -55,6 +55,16 @@ const detectFace = (arr) => {
 
 const eveCharacter = (str) => {
         //write your code here ...
+        let res = [];
+        let arr = str.split("");
+        // console.log(arr);
+        for (let i = 0; i < arr.length; i += 2) {
+            //   console.log(arr[i]);
+            res.push(arr[i]);
+
+        }
+        // console.log(res.join(""));
+        return res.join("");
     }
     // -------------------------------------------------------------------------------------------------------
 
